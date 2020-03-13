@@ -1,2 +1,2 @@
-# -Learning
+# Learning
 Record the learning process
