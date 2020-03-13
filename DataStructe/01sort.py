@@ -14,7 +14,6 @@ def bubblesort(L):
                 L[j],L[j+1] = L[j+1],L[j]
     return L 
 
-
 """"
 - 快速排序：使用“分而治之”的方式，先找到一个中间值，并按此中间值将所有打算排序的数据分为两个部分：
     1.小于中间值的数据放在左边
@@ -42,7 +41,6 @@ def quitsort(L):
         else: 
             right.append(i)
     return quitsort(left) + [mid] + quitsort(right)
-
 
 
 if __name__ == "__main__":
