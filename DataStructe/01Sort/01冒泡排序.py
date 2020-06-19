@@ -8,12 +8,15 @@
 - 稳定性：稳定 
 """
 def bubblesort(L):
-    for i in range(len(L)-1,-1,-1):
-        for j in range(i):
+    for i in range(len(L)):
+        flag = False
+        for j in range(len(L)-i-1):
             if L[j] > L[j+1]:
                 L[j],L[j+1] = L[j+1],L[j]
-    return L 
+                flag = True 
+        if not flag: break 
+
 if __name__ == "__main__":
     arry = [32,4,60,71,11,23,7]
-    res = bubblesort(arry)
-    print(res)
+    bubblesort(arry)
+    print(arry)
