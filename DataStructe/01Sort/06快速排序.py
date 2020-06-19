@@ -11,22 +11,44 @@
 - 排序方式：In-place
 - 稳定性：不稳定
 
+
+递推公式：
+quick_sort(p…r) = quick_sort(p…q-1) + quick_sort(q+1… r)
+
+终止条件：
+p >= r
+
+伪代码：
+// 快速排序，A是数组，n表示数组的大小
+quick_sort(A, n) {
+  quick_sort_c(A, 0, n-1)
+}
+// 快速排序递归函数，p,r为下标
+quick_sort_c(A, p, r) {
+  if p >= r then return
+  
+  q = partition(A, p, r) // 获取分区点
+  quick_sort_c(A, p, q-1)
+  quick_sort_c(A, q+1, r)
+}
 """
-def quitsort(L):
-    # 结束条件
-    if len(L) < 2:
-        return L 
-    mid = L[0]
-    L.remove(mid)
-    left,right = [],[]
-    for i in L:
-        if i <= mid:
-            left.append(i)
-        else: 
-            right.append(i)
-    return quitsort(left) + [mid] + quitsort(right)
+def quitsort(L,start,end):
+    if not L or start >= end : return 
+    left, right, povit = start, end, L[start]
+    while left < right:
+        while left < right and L[right] >= povit:
+            right -= 1
+        L[left] = L[right]
+
+        while left < right and L[left] < povit:
+            left += 1
+        L[right] = L[left]
+
+    L[left] = povit
+    quitsort(L,start,left-1)
+    quitsort(L,left+1,end)
 
 if __name__ == "__main__":
     arry = [32,4,60,71,11,23,7]
-    res = quitsort(arry)
-    print(res)
+    quitsort(arry,0,len(arry)-1)
+    print(arry)
