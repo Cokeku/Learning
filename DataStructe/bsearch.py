@@ -2,7 +2,7 @@ def bsearch(L,n,target):
     low = 0
     high = n - 1
     while low <= high:
-        mid = int((low+high) / 2)
+        mid = (low+high) // 2
         if L[mid] == target:
             return mid 
         elif (L[mid]) < target:
@@ -14,4 +14,4 @@ def bsearch(L,n,target):
 if __name__ == "__main__":
     arry = [4,20,21,50,60,71]
     
-    print(bsearch(arry,len(arry),50))
+    print(bsearch(arry,len(arry),71))
